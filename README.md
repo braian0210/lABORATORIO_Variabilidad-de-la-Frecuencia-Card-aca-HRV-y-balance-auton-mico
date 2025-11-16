@@ -10,9 +10,23 @@ a. Fundamento teórico
 Antes de iniciar la práctica, los estudiantes deberán realizar una investigación teórica que incluya los siguientes temas:
 
 - Actividad simpática y parasimpática del sistema nervioso autónomo.
+  El sistema nervioso autónomo se divide en 3, sin embargo hablaremos de los mas importante el simpatico y el parasimaptico, el sistema nervios simpatico prepara el cuerpo para la lucha o huida ya que aumenta la frecuencia cardiac y la presión arterial, por el contrario el parasimpático es del descanso y digestión ezste busca la recuperación y calma, el simpático Usa principalmente el neurotansmisor norepinefrina (fibras adrenérgicas), mientras el parasimpático usa principalmente acetilcolina (fibras colinérgicas) para las neuronas preganglionares y posganglionares que activan los receptores muscarínicos.
   
 - Efecto de la actividad simpática y parasimpática en la frecuencia
 cardíaca.
+El plexo cardíaco es la red nerviosa que inerva el corazón.  Esta red es alimentada por contribuciones que vienen de los nervios vagos, tanto el derecho como el izquierdo, además del tronco simpático.  Estos nervios regulan e impactan la frecuencia de los latidos del corazón, el gasto cardíaco y la fuerza con que se contrae el corazón.
+  Simpático:
+Segrega neurotransmisores como la norepinefrina, que se acoplan a los receptores cardíacos, lo que incrementa la entrada de calcio.
+Elevar la frecuencia del corazón.
+Incrementar la potencia de contracción del miocardio.
+La reacción de "huida o lucha", que incrementa la frecuencia cardíaca.
+
+  Parasimpático: La estimulación parasimpática de los receptores M2 en el corazón causa que la frecuencia del corazón y la velocidad de conducción a través del nodo AV se reduzcan.
+Libera acetilcolina, que se une a los receptores muscarínicos, lo que disminuye la entrada de calcio en los cardiomiocitos y reduce el funcionamiento eléctrico.
+Disminuye  la frecuencia cardíaca.
+Disminuir la potencia de contracción del corazón.
+Vasoconstricción (estrechamiento) de las arterias del corazón.
+
 
 - Variabilidad de la frecuencia cardíaca (HRV) obtenida a partir de la señal
 electrocardiográfica (ECG).
