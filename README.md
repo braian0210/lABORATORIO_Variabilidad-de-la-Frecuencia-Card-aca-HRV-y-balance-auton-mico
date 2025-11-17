@@ -67,8 +67,7 @@ Vasoconstricción (estrechamiento) de las arterias del corazón.
      Valores bajos → Estrés o predominancia simpática.
 
 Formas típicas del diagrama: Nube elíptica estrecha demuestra un HRV bajo, mientras que un elipse más redondeada y dispersa demuestra una alta HRV, y si se ven figuras irregulares muestra que hay arritmias o dinámica compleja.
-
-     Una reducción significativa de HRV se asocia con estrés, sobreentrenamiento, diabetes, enfermedades cardíacas y riesgo arrítmico.
+Una reducción significativa de HRV se asocia con estrés, sobreentrenamiento, diabetes, enfermedades cardíacas y riesgo arrítmico.
      
 - **Variabilidad de la frecuencia cardíaca (HRV) y balance autonómico**
   Como vimos anteriormente el sistema nervioso autonomo controla el corazón mediante si es simpatico o parasimpático y la HVR es un indicador directo de este balance
