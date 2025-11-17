@@ -74,14 +74,14 @@ Formas típicas del diagrama: Nube elíptica estrecha demuestra un HRV bajo, mie
   Como vimos anteriormente el sistema nervioso autonomo controla el corazón mediante si es simpatico o parasimpático y la HVR es un indicador directo de este balance
   La metricas mas usadas
   Dominio del tiempo
-SDNN: variabilidad total → salud general del SNA.
-RMSSD: variabilidad de corto plazo → tono vagal.
-pNN50: % de diferencias sucesivas >50 ms → actividad parasimpática.
+     SDNN: variabilidad total → salud general del SNA.
+     RMSSD: variabilidad de corto plazo → tono vagal.
+     pNN50: % de diferencias sucesivas >50 ms → actividad parasimpática.
 
-Dominio de frecuencia
-LF (0.04–0.15 Hz): mezcla simpática + parasimpática.
-HF (0.15–0.40 Hz): actividad parasimpática.
-LF/HF: indicador del balance autonómico.
+  Dominio de frecuencia
+     LF (0.04–0.15 Hz): mezcla simpática + parasimpática.
+     HF (0.15–0.40 Hz): actividad parasimpática.
+     LF/HF: indicador del balance autonómico.
 
   
 - **Formulación del plan de acción para cumplir con el objetivo de la práctica y diagrama de flujo.**
