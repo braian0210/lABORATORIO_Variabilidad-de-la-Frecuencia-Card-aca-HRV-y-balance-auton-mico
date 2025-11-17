@@ -47,7 +47,9 @@ Vasoconstricción (estrechamiento) de las arterias del corazón.
 
 - **Diagrama de Poincaré como herramienta de análisis de la serie R-R.**
   El método no lineal para evaluar la HRV es el diagrama de Poincaré.  Se trata de graficar cada intervalo R-R(n) en relación con el siguiente, que es R-R(n+1).  Esta nube de puntos ilustra de manera visual la dinámica del nodo sinusal.
+  
   <img width="469" height="477" alt="Figura-94-Diagrama-de-Poincare-de-una-serie-RR" src="https://github.com/user-attachments/assets/5bcd6d47-b5b6-4bf3-a60b-2db67ebc5e58" />
+  
   Las principales ventajas que la Gráfica de Poincaré ofrece en comparación con los métodos tradicionales que se apoyan en parámetros estadísticos son:
   + Permite vizualizar aspectos no lineales de la secuencia de intervalos
   + Fácil visualizació de la variación entre latido
