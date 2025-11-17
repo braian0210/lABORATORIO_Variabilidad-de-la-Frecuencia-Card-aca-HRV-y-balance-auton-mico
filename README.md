@@ -3,7 +3,7 @@
 ## OBJETIVOS:
 Identificar cambios en el balance autonómico mediante análisis temporal de la variabilidad de la frecuencia cardíaca (HRV).
 
-#PARTE A.
+# PARTE A.
 
 ## a. Fundamento teórico
 
@@ -62,13 +62,26 @@ Vasoconstricción (estrechamiento) de las arterias del corazón.
 
  - SD2 (variabilidad a largo plazo):Dispersión a lo largo de la línea de identidad. Muestra interacción entre el sistema simpático y el parasimpático.
 
- -SD1/SD2:Índice de balance autonómico.
+ - SD1/SD2:Índice de balance autonómico.
      Valores elevados → predominancia del vago.
      Valores bajos → Estrés o predominancia simpática.
 
 Formas típicas del diagrama: Nube elíptica estrecha demuestra un HRV bajo, mientras que un elipse más redondeada y dispersa demuestra una alta HRV, y si se ven figuras irregulares muestra que hay arritmias o dinámica compleja.
+
+     Una reducción significativa de HRV se asocia con estrés, sobreentrenamiento, diabetes, enfermedades cardíacas y riesgo arrítmico.
      
 - **Variabilidad de la frecuencia cardíaca (HRV) y balance autonómico**
+  Como vimos anteriormente el sistema nervioso autonomo controla el corazón mediante si es simpatico o parasimpático y la HVR es un indicador directo de este balance
+  La metricas mas usadas
+  Dominio del tiempo
+SDNN: variabilidad total → salud general del SNA.
+RMSSD: variabilidad de corto plazo → tono vagal.
+pNN50: % de diferencias sucesivas >50 ms → actividad parasimpática.
+
+Dominio de frecuencia
+LF (0.04–0.15 Hz): mezcla simpática + parasimpática.
+HF (0.15–0.40 Hz): actividad parasimpática.
+LF/HF: indicador del balance autonómico.
 
   
 - **Formulación del plan de acción para cumplir con el objetivo de la práctica y diagrama de flujo.**
