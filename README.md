@@ -84,6 +84,8 @@ Una reducción significativa de HRV se asocia con estrés, sobreentrenamiento, d
 
   
 - **Formulación del plan de acción para cumplir con el objetivo de la práctica y diagrama de flujo.**
+- <img width="1022" height="617" alt="image" src="https://github.com/user-attachments/assets/0133083a-1ade-4278-8734-15de608c3253" />
+
 
 ## b. Adquisición de la señal ECG
 
