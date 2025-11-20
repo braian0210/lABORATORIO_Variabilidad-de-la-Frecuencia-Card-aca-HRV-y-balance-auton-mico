@@ -99,6 +99,45 @@ durante los dos últimos minutos.
 Verificar que la frecuencia de muestreo y los niveles de cuantificación
 establecidos sean los apropiados para este tipo de señal. 
 
+A continuación se anexa el codigo utilizado para la captura de la señal ECG del sujeto seleccionado:
+
+
+```
+import nidaqmx
+from nidaqmx.constants import AcquisitionType
+import numpy as np
+import time
+from nidaqmx.stream_readers import AnalogSingleChannelReader
+from scipy.signal import filtfilt
+
+
+rate = 2000   # Hz
+duration = 240  # 4 minutos
+save_data = []
+
+task = nidaqmx.Task()
+task.ai_channels.add_ai_voltage_chan("Dev5/ai0")
+task.timing.cfg_samp_clk_timing(rate, sample_mode=AcquisitionType.CONTINUOUS)
+
+reader = AnalogSingleChannelReader(task.in_stream)
+
+samples_per_read = 1000  # tomador de varias muesstras en la pantalla para optimizar
+
+start_time = time.time()
+
+while time.time() - start_time < duration:
+    data = np.zeros(samples_per_read)
+    reader.read_many_sample(data, number_of_samples_per_channel=samples_per_read, timeout=5)
+    save_data.extend(data)
+
+task.close()
+
+save_data = np.array(save_data)
+np.savetxt(r"C:\Users\USUARIO\Desktop\lab 5\Datos4minutosBrayan.csv", save_data, delimiter=",")
+
+print("Total muestras:", len(save_data))
+
+```
 # PARTE B
 
 ## c. Pre-procesamiento de la señal
