@@ -355,6 +355,35 @@ Obteniendo
 
 <img width="593" height="59" alt="image" src="https://github.com/user-attachments/assets/cbf99bf9-a0b8-4cfb-a882-d2f05b0046ce" />
 
+Filtro PASA banda obtenido del Pasa Altos * Pasa Banda
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+
+#Coeficientes del PASA-BAJOS
+b_lp = np.array([0.00869615, 0.03478461, 0.05217692, 0.03478461, 0.00869615])
+a_lp = np.array([1.0, -2.06263428, 1.86112855, -0.79314494, 0.13378912])
+
+#Coeficientes del PASA-ALTOS
+b_hp = np.array([ 0.99803939 ,-1.99607878 , 0.99803939])
+a_hp = np.array([ 1.      ,   -1.99607686 , 0.99608071])
+
+#Multiplicación de funciones
+# H_total(z) = H_lp(z) * H_hp(z)
+b_bp = np.convolve(b_lp, b_hp)
+a_bp = np.convolve(a_lp, a_hp)
+
+print("FILTRO PASA-BANDA RESULTANTE")
+print("Numerador b_bp:", b_bp)
+print("Denominador a_bp:", a_bp)
+```
+
+Obteneindo 
+
+<img width="947" height="124" alt="image" src="https://github.com/user-attachments/assets/0f3a374b-a0c6-49ba-bedd-1260c71aa602" />
+
 
 -Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos
 cada uno.
