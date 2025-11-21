@@ -277,6 +277,7 @@ print(f"orden del filtro :{N} aproximado a 2")
 ```
 Obteniendo 
 
+
 <img width="541" height="406" alt="image" src="https://github.com/user-attachments/assets/be6c459f-a535-48f7-b17f-c93929d82314" />
 
 
@@ -323,6 +324,7 @@ plt.show()
 ```
 
 Obteniéndose
+
 
 <img width="975" height="648" alt="image" src="https://github.com/user-attachments/assets/26a5821c-524b-4b8b-bde8-28af0d6e26e1" />
 
@@ -390,9 +392,12 @@ plt.show()
 
 Obteniéndose 
 
+
 <img width="839" height="201" alt="image" src="https://github.com/user-attachments/assets/71ad11ff-1bea-4e8a-a0c4-0e88bed85bd8" />
 
+
 <img width="804" height="506" alt="image" src="https://github.com/user-attachments/assets/949135b2-088e-4de4-8d3f-550f877bfd64" />
+
 
 <img width="783" height="505" alt="image" src="https://github.com/user-attachments/assets/e8681e9b-b9a3-4fdb-b4ea-5687d563dd67" />
 
@@ -441,9 +446,12 @@ plt.show()
 
 Obteniéndose 
 
+
 <img width="593" height="59" alt="image" src="https://github.com/user-attachments/assets/cbf99bf9-a0b8-4cfb-a882-d2f05b0046ce" />
 
+
 <img width="810" height="505" alt="image" src="https://github.com/user-attachments/assets/43346c12-228d-4ac9-82e2-74c04598c38f" />
+
 
 <img width="801" height="507" alt="image" src="https://github.com/user-attachments/assets/a18fa481-3399-4fb5-8a9c-ef26dda0a217" />
 
@@ -500,7 +508,9 @@ Obteniéndose
 
 <img width="947" height="124" alt="image" src="https://github.com/user-attachments/assets/0f3a374b-a0c6-49ba-bedd-1260c71aa602" />
 
+
 <img width="804" height="509" alt="image" src="https://github.com/user-attachments/assets/926c7708-6e8c-4282-9bd4-d71529d46d32" />
+
 
 <img width="781" height="508" alt="image" src="https://github.com/user-attachments/assets/71b31f7a-a0ba-4663-aa84-af1d83b5ea46" />
 
@@ -624,16 +634,20 @@ Obteniéndose
 
 <img width="448" height="471" alt="image" src="https://github.com/user-attachments/assets/72bb0cdd-efdc-46ea-95d3-7ea96ab7bb9a" />
 
+
 <img width="450" height="474" alt="image" src="https://github.com/user-attachments/assets/288d32fb-eb3c-464a-8230-4d3bdade9ef5" />
+
 
 <img width="451" height="475" alt="image" src="https://github.com/user-attachments/assets/c076f372-1cf4-49ac-b7a2-18153f1b7214" />
 
+
 <img width="441" height="467" alt="image" src="https://github.com/user-attachments/assets/c1113e08-56aa-4fb9-92d1-e2356b07a5e4" />
+
 
 <img width="445" height="466" alt="image" src="https://github.com/user-attachments/assets/401d1ca8-ac56-45a6-815d-f83b6bbb9794" />
 
-<img width="456" height="114" alt="image" src="https://github.com/user-attachments/assets/001ebd17-0488-4fe2-bcd6-dbfd6cc77cb7" />
 
+<img width="456" height="114" alt="image" src="https://github.com/user-attachments/assets/001ebd17-0488-4fe2-bcd6-dbfd6cc77cb7" />
 
 
 El diagrama de Poincaré es una herramienta de análisis no lineal que contribuye a estudiar la variabilidad de la frecuencia cardíaca (HRV) mediante el análisis de la dispersión de los intervalos RR en un electrocardiograma. Para crearla, se grafica cada intervalo RR_n en comparación con RR_n+1, dando lugar a una nube de puntos que muestra el equilibrio entre las ramas simpática y parasimpática del sistema nervioso autónomo. Esta representación recoge las oscilaciones rápidas y lentas en la actividad del nodo sinusal, proporcionando datos que no se pueden obtener mediante análisis lineales.
