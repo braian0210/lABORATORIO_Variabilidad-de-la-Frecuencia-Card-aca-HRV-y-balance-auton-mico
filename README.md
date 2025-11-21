@@ -380,7 +380,7 @@ print("Numerador b_bp:", b_bp)
 print("Denominador a_bp:", a_bp)
 ```
 
-Obteneindo 
+Obteniendo 
 
 <img width="947" height="124" alt="image" src="https://github.com/user-attachments/assets/0f3a374b-a0c6-49ba-bedd-1260c71aa602" />
 
