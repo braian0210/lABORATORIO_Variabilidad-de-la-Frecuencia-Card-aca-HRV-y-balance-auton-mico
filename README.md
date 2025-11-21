@@ -414,4 +414,9 @@ ambos segmentos de señal ECG.
 
 
 
+El diagrama de Poincaré es una herramienta de análisis no lineal que contribuye a estudiar la variabilidad de la frecuencia cardíaca (HRV) mediante el análisis de la dispersión de los intervalos RR en un electrocardiograma. Para crearla, se grafica cada intervalo RR_n en comparación con RR_n+1, dando lugar a una nube de puntos que muestra el equilibrio entre las ramas simpática y parasimpática del sistema nervioso autónomo. Esta representación recoge las oscilaciones rápidas y lentas en la actividad del nodo sinusal, proporcionando datos que no se pueden obtener mediante análisis lineales.
+En esta actividad, se dividió el ECG en cuatro segmentos de 60 segundos cada uno, los cuales representan intervalos tanto de reposo como de lectura en voz alta. Para cada segmento se generó el diagrama de Poincaré y se calcularon los índices que provienen de la elipse ajustada. CVI, CSI, SD1 y SD2. El índice SD1 evalúa la dispersión que es perpendicular a la diagonal de identidad; se vincula con la variabilidad a corto plazo, que está regulada en gran medida por el funcionamiento parasimpático. Por otro lado, el índice SD2 mide la dispersión en la diagonal y refleja la variabilidad a largo plazo, que está vinculada con la regulación general del sistema cardiovascular, donde intervienen los mecanismos parasimpáticos y simpáticos.
+En suma, los diagramas de Poincaré y sus índices muestran con claridad cómo la modulación autonómica es afectada por las variaciones en la actividad. Mientras que la lectura genera una dispersión y variabilidad más amplias, los patrones durante el reposo son más estables. Esto muestra cómo interactúan dinámicamente los mecanismos simpáticos y parasimpáticos.
+
+
 
