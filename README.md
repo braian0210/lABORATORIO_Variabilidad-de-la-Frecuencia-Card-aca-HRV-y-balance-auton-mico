@@ -454,6 +454,108 @@ ambos segmentos de señal ECG.
 - Obtener el diagrama de Poincaré para cada segmento de señal ECG y comparar la dispersión de la nube de puntos que se obtuvo para cada caso.
 - Calcular los valores de los índices tanto de actividad vagal (CVI) como de actividad simpática (CSI) que se obtienen a partir del diagrama de Poincaré. 
 
+A continuación se anexa el codigo utilizado para obtener el diagráma de Poincaré
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import find_peaks
+
+# Cargar archivo CSV
+ruta = r"/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv"
+filtrado_final = np.loadtxt(ruta, delimiter=",")
+
+# Frecuencia de muestreo del DAQ
+fs = 1600
+tiempo = np.arange(len(filtrado_final)) / fs
+
+segment_duration_sec = 60
+samples_per_segment = int(segment_duration_sec * fs)
+n_segments = len(filtrado_final) // samples_per_segment
+
+min_rr_sec = 0.25               # 250 ms mínimo fisiológico
+min_distance = int(min_rr_sec * fs)
+
+resultados = []                 # para guardar SD1, SD2, CVI, CSI
+for seg in range(n_segments):
+
+    start = seg * samples_per_segment
+    end = start + samples_per_segment
+
+    segmento = filtrado_final[start:end]
+    tiempo_seg = tiempo[start:end]
+
+    # Detección de picos R
+    umbral = np.mean(segmento) + 0.4*np.std(segmento)
+    prominencia = 0.3*np.std(segmento)
+
+    picos, _ = find_peaks(
+        segmento,
+        distance=min_distance,
+        height=umbral,
+        prominence=prominencia
+    )
+
+    t_picos = tiempo_seg[picos]
+
+    if len(t_picos) < 2:
+        print(f"Segmento {seg+1}: insuficientes picos R.")
+        continue
+
+    #RR en milisegundos
+    rr = np.diff(t_picos) * 1000    # ms
+
+    # rr[n] y rr[n+1]
+    rr_n = rr[:-1]
+    rr_n1 = rr[1:]
+
+    # Cálculo SD1 y SD2
+    diff_rr = rr_n1 - rr_n
+    var_diff = np.var(diff_rr, ddof=1)
+    var_rr = np.var(rr, ddof=1)
+
+    SD1 = np.sqrt(var_diff / 2)
+    SD2 = np.sqrt(2 * var_rr - (var_diff / 2))
+
+    # Cálculo CVI y CSI
+    CVI = np.log10(SD1 * SD2)
+    CSI = SD2 / SD1
+
+    resultados.append((seg+1, SD1, SD2, CVI, CSI))
+
+    # Diagrama de Poincaré
+    plt.figure(figsize=(6,6))
+    plt.scatter(rr_n, rr_n1, s=12)
+    plt.plot([min(rr_n), max(rr_n)], [min(rr_n), max(rr_n)], '--', linewidth=1)
+    plt.title(f"Poincaré Segmento {seg+1}\nSD1={SD1:.2f} ms  SD2={SD2:.2f} ms")
+    plt.xlabel("RR(n) [ms]")
+    plt.ylabel("RR(n+1) [ms]")
+    plt.grid(True)
+    plt.gca().set_aspect('equal')
+    plt.show()
+
+
+# Imprimir tabla de resultados
+print("\n=== RESULTADOS PARTE C ===")
+print("SEG |   SD1(ms)   |   SD2(ms)   |    CVI    |    CSI")
+for r in resultados:
+    print(f"{r[0]:>3} | {r[1]:>10.2f} | {r[2]:>10.2f} | {r[3]:>8.3f} | {r[4]:>8.3f}")
+```
+
+Obteniéndose
+
+<img width="448" height="471" alt="image" src="https://github.com/user-attachments/assets/72bb0cdd-efdc-46ea-95d3-7ea96ab7bb9a" />
+
+<img width="450" height="474" alt="image" src="https://github.com/user-attachments/assets/288d32fb-eb3c-464a-8230-4d3bdade9ef5" />
+
+<img width="451" height="475" alt="image" src="https://github.com/user-attachments/assets/c076f372-1cf4-49ac-b7a2-18153f1b7214" />
+
+<img width="441" height="467" alt="image" src="https://github.com/user-attachments/assets/c1113e08-56aa-4fb9-92d1-e2356b07a5e4" />
+
+<img width="445" height="466" alt="image" src="https://github.com/user-attachments/assets/401d1ca8-ac56-45a6-815d-f83b6bbb9794" />
+
+<img width="456" height="114" alt="image" src="https://github.com/user-attachments/assets/001ebd17-0488-4fe2-bcd6-dbfd6cc77cb7" />
+
 
 
 El diagrama de Poincaré es una herramienta de análisis no lineal que contribuye a estudiar la variabilidad de la frecuencia cardíaca (HRV) mediante el análisis de la dispersión de los intervalos RR en un electrocardiograma. Para crearla, se grafica cada intervalo RR_n en comparación con RR_n+1, dando lugar a una nube de puntos que muestra el equilibrio entre las ramas simpática y parasimpática del sistema nervioso autónomo. Esta representación recoge las oscilaciones rápidas y lentas en la actividad del nodo sinusal, proporcionando datos que no se pueden obtener mediante análisis lineales.
