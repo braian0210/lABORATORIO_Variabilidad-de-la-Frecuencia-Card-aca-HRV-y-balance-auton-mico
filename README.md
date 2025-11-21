@@ -213,7 +213,7 @@ c. Pre-procesamiento de la señal
 demostrando su diseño.
 
 
-A continuación se anexa el código en donde se hace uso de un filtro pasabandas y un filtro notch para filtar la señal ECG del sujeto seleccionado.
+A continuación se anexa el código en donde se hace uso de un filtro pasabandas y un filtro notch para filtrar la señal ECG del sujeto seleccionado.
 
 ```
 import pandas as pd
@@ -367,7 +367,7 @@ Obteniendo
  Implementar el filtro a la señal obtenida asumiendo parámetros
 iniciales en 0.
 
-A continuación se anexa el codigo que se utilizo para filtarr la señal ECG capturada
+A continuación se anexa el codigo que se utilizo para filtrar la señal ECG capturada
 
 ```
 import pandas as pd
@@ -769,7 +769,9 @@ Obteniéndose
 <img width="445" height="466" alt="image" src="https://github.com/user-attachments/assets/401d1ca8-ac56-45a6-815d-f83b6bbb9794" />
 
 
+
 <img width="456" height="114" alt="image" src="https://github.com/user-attachments/assets/001ebd17-0488-4fe2-bcd6-dbfd6cc77cb7" />
+
 
 
 El diagrama de Poincaré es una herramienta de análisis no lineal que contribuye a estudiar la variabilidad de la frecuencia cardíaca (HRV) mediante el análisis de la dispersión de los intervalos RR en un electrocardiograma. Para crearla, se grafica cada intervalo RR_n en comparación con RR_n+1, dando lugar a una nube de puntos que muestra el equilibrio entre las ramas simpática y parasimpática del sistema nervioso autónomo. Esta representación recoge las oscilaciones rápidas y lentas en la actividad del nodo sinusal, proporcionando datos que no se pueden obtener mediante análisis lineales.
