@@ -778,5 +778,11 @@ El diagrama de Poincaré es una herramienta de análisis no lineal que contribuy
 En esta actividad, se dividió el ECG en cuatro segmentos de 60 segundos cada uno, los cuales representan intervalos tanto de reposo como de lectura en voz alta. Para cada segmento se generó el diagrama de Poincaré y se calcularon los índices que provienen de la elipse ajustada. CVI, CSI, SD1 y SD2. El índice SD1 evalúa la dispersión que es perpendicular a la diagonal de identidad; se vincula con la variabilidad a corto plazo, que está regulada en gran medida por el funcionamiento parasimpático. Por otro lado, el índice SD2 mide la dispersión en la diagonal y refleja la variabilidad a largo plazo, que está vinculada con la regulación general del sistema cardiovascular, donde intervienen los mecanismos parasimpáticos y simpáticos.
 En suma, los diagramas de Poincaré y sus índices muestran con claridad cómo la modulación autonómica es afectada por las variaciones en la actividad. Mientras que la lectura genera una dispersión y variabilidad más amplias, los patrones durante el reposo son más estables. Esto muestra cómo interactúan dinámicamente los mecanismos simpáticos y parasimpáticos.
 
+## Referencias
+ - iirnotch — SciPy v1.16.2 Manual. (s. f.). https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirnotch.html
+ -  Waxenbaum JA, Reddy V, Varacallo MA. Anatomy, Autonomic Nervous System. [Updated 2023 Jul 24]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK539845/
+ - Tindle J, Tadi P. Neuroanatomía, Sistema Nervioso Parasimpático. [Actualizado el 31 de octubre de 2022]. En: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; enero de 2025-. Disponible en: https://www-ncbi-nlm-nih-gov.translate.goog/books/NBK553141/?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=tc
+ - Waxenbaum JA, Reddy V, Varacallo MA. Anatomy, Autonomic Nervous System. 2023 Jul 24. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Jan–. PMID: 30969667.
+https://www.kenhub.com/es/library/anatomia-es/inervacion-del-corazon
 
 
