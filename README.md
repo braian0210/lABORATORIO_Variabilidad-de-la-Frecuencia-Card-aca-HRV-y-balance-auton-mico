@@ -344,10 +344,10 @@ f_c = 200 # Hz
 wn = f_c * 2 * np.pi
 
 b_analog, a_analog = signal.iirfilter(
-    N, 
-    wn, 
-    btype='lowpass', 
-    analog=True, 
+    N,
+    wn,
+    btype='lowpass',
+    analog=True,
     ftype='butter'
 )
 
@@ -355,7 +355,7 @@ print(" Coeficientes Analógicos H(s) ")
 print(f"Numerador bs: {b_analog}")
 print(f"Denominador as: {a_analog}\n")
 
-# Transformada Bilineal 
+# Transformada Bilineal
 
 b_digital, a_digital = signal.bilinear(b_analog, a_analog, fs)
 
@@ -365,11 +365,37 @@ print("--- Coeficientes Digitales H(z) ---")
 print(f"Numerador b_z: {filtz.num}")
 print(f"Denominador a_z: {filtz.den}\n")
 
+#RESPUESTA EN FRECUENCIA
+w, h = signal.freqz(b_digital, a_digital, worN=2048, fs=fs)
+
+plt.figure(figsize=(10, 6))
+plt.plot(w, 20 * np.log10(abs(h)))
+plt.title("Respuesta en Frecuencia del Filtro Digital Pasa Bajos (Magnitud)")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Magnitud [dB]")
+plt.grid(True)
+plt.show()
+
+#RESPUESTA DE FASE
+plt.figure(figsize=(10, 6))
+plt.plot(w, np.unwrap(np.angle(h)))
+plt.title("Respuesta de Fase del Filtro Digital Pasa Bajos")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Fase [rad]")
+plt.grid(True)
+plt.show()
+
+
 ```
 
-Obteniendo 
+Obteniéndose 
 
 <img width="839" height="201" alt="image" src="https://github.com/user-attachments/assets/71ad11ff-1bea-4e8a-a0c4-0e88bed85bd8" />
+
+<img width="804" height="506" alt="image" src="https://github.com/user-attachments/assets/949135b2-088e-4de4-8d3f-550f877bfd64" />
+
+<img width="783" height="505" alt="image" src="https://github.com/user-attachments/assets/e8681e9b-b9a3-4fdb-b4ea-5687d563dd67" />
+
 
 Filtro Pasa Altos
 
@@ -382,20 +408,45 @@ import math
 fs = 1600
 N = 4
 f_c = 0.04
-zeta = 1 
-G = 1     
-frad = f_c * 2 * np.pi 
-nums = np.array([G, 0, 0]) 
+zeta = 1
+G = 1
+frad = f_c * 2 * np.pi
+nums = np.array([G, 0, 0])
 dens = np.array([1, 2 * zeta * frad, frad * frad])
 b_digital, a_digital = signal.bilinear(nums, dens, fs)
 filtz = signal.dlti(b_digital, a_digital)
-print(f"Numerador b_z: {filtz.num}") 
+print(f"Numerador b_z: {filtz.num}")
 print(f"Denominador a_z: {filtz.den}")
+
+#RESPUESTA EN FRECUENCIA
+w, h = signal.freqz(b_digital, a_digital, worN=2048, fs=fs)
+plt.figure(figsize=(10, 6))
+plt.plot(w, 20 * np.log10(abs(h)))
+plt.title("Respuesta en Frecuencia del Filtro Digital Pasa Altos(Magnitud)")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Magnitud [dB]")
+plt.grid(True)
+plt.show()
+
+#RESPUESTA DE FASE
+plt.figure(figsize=(10, 6))
+plt.plot(w, np.unwrap(np.angle(h)))
+plt.title("Respuesta de Fase del Filtro Digital Pasa Altos")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Fase [rad]")
+plt.grid(True)
+plt.show()
+
 ```
 
-Obteniendo 
+Obteniéndose 
 
 <img width="593" height="59" alt="image" src="https://github.com/user-attachments/assets/cbf99bf9-a0b8-4cfb-a882-d2f05b0046ce" />
+
+<img width="810" height="505" alt="image" src="https://github.com/user-attachments/assets/43346c12-228d-4ac9-82e2-74c04598c38f" />
+
+<img width="801" height="507" alt="image" src="https://github.com/user-attachments/assets/a18fa481-3399-4fb5-8a9c-ef26dda0a217" />
+
 
 Filtro PASA banda obtenido del Pasa Altos * Pasa Banda
 
@@ -420,11 +471,38 @@ a_bp = np.convolve(a_lp, a_hp)
 print("FILTRO PASA-BANDA RESULTANTE")
 print("Numerador b_bp:", b_bp)
 print("Denominador a_bp:", a_bp)
+
+#RESPUESTA EN FRECUENCIA DEL FILTRO PASA-BANDA
+fs = 1600  
+
+w, h = signal.freqz(b_bp, a_bp, worN=4096, fs=fs)
+plt.figure(figsize=(10, 6))
+plt.plot(w, 20 * np.log10(abs(h)))
+plt.title("Respuesta en Frecuencia del Filtro Pasa-Banda (Magnitud)")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Magnitud [dB]")
+plt.grid(True)
+plt.show()
+
+#RESPUESTA DE FASE
+plt.figure(figsize=(10, 6))
+plt.plot(w, np.unwrap(np.angle(h)))
+plt.title("Respuesta de Fase del Filtro Pasa-Banda")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Fase [rad]")
+plt.grid(True)
+plt.show()
+
 ```
 
-Obteniendo 
+Obteniéndose 
+
 
 <img width="947" height="124" alt="image" src="https://github.com/user-attachments/assets/0f3a374b-a0c6-49ba-bedd-1260c71aa602" />
+
+<img width="804" height="509" alt="image" src="https://github.com/user-attachments/assets/926c7708-6e8c-4282-9bd4-d71529d46d32" />
+
+<img width="781" height="508" alt="image" src="https://github.com/user-attachments/assets/71b31f7a-a0ba-4663-aa84-af1d83b5ea46" />
 
 
 -Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos
