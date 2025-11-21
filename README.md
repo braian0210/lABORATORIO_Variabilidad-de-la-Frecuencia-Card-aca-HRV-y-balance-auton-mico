@@ -211,6 +211,71 @@ demostrando su diseño.
 
  Diseñar un filtro IIR de acuerdo con los parámetros de la señal.
 
+```
+#FILTRO IIR LIBRO
+import numpy as np 
+from scipy import signal
+import matplotlib.pyplot as plt
+import sympy as sp
+fs= 1600# hz
+ts= 1/fs
+hzp1= 0.05 # hz
+hzp2= 200 # hz
+hzs1= 0.01 # hz
+hzs2= 400 #hz
+k1= -3 #db
+l2 =-15 #db
+wp1= hzp1*2*np.pi/fs
+wp2= hzp2*2*np.pi/fs
+ws1= hzs1*2*np.pi/fs
+ws2= hzs2*2*np.pi/fs
+print(f"frecuencia pasante 1 :{wp1}")
+print(f"frecuencia pasante 2 :{wp2}")
+print(f"frecuencia de rechazo 1 :{ws1}")
+print(f"frecuencia de rechazo 2 :{ws2}")
+omegap1= (2/ts)*np.tan(wp1/2)
+omegap2= (2/ts)*np.tan(wp2/2)
+omegas1= (2/ts)*np.tan(ws1/2)
+omegas2= (2/ts)*np.tan(ws2/2)
+print(f"omega pasante 1 :{omegap1}")
+print(f"omega pasante 2 :{omegap2}")
+print(f"omega de rechazo 1 :{omegas1}")
+print(f"omega de rechazo 2 :{omegas2}")
+Bw= omegap2 - omegap1
+#omega02= omegap1*omegap2
+#omegalow= omegas1*omegas2
+omega0= np.sqrt(omegap1*omegap2)
+E2= 10**((-k1/10))-1
+E=1 #aproximacion de la raiz deE2
+print(f"E2 :{E2}")
+Delta2cuadraro= 10**(l2/10)
+print(f"delta2 :{Delta2cuadraro}")
+Bw= omegap2 - omegap1
+print(f"ancho de banda :{Bw}")
+Delta1= np.sqrt((1/Delta2cuadraro)-1)
+print(f"delta1 :{Delta1}")
+omega_pasaaltos=1
+omega02= omegap1*omegap2
+print(f"omega02 :{omega02}")
+omegas1LP= np.abs(((omegas1**2)-omega02)/(omegas1*Bw))
+omegas2LP= np.abs(((omegas2**2)-omega02)/(omegas2*Bw))
+print(f"omega de rechazo 1 LP :{omegas1LP}")
+print(f"omega de rechazo 2 LP :{omegas2LP}")
+BordePrototipo= min(omegas1LP, omegas2LP)
+print(f"Borde prototipo :{BordePrototipo}")
+reltrancision= BordePrototipo/omega_pasaaltos
+print(f"relacion de transicion :{reltrancision}")
+N= (np.log10(Delta1/E))/(np.log10(reltrancision))
+N= int(np.ceil(N))
+
+print(f"orden del filtro :{N} aproximado a 2")
+
+```
+Obteniendo 
+
+<img width="541" height="406" alt="image" src="https://github.com/user-attachments/assets/be6c459f-a535-48f7-b17f-c93929d82314" />
+
+
  Obtener la ecuación en diferencias del filtro.
 
  Implementar el filtro a la señal obtenida asumiendo parámetros
