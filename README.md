@@ -674,6 +674,201 @@ ambos segmentos de señal ECG.
 
 A continuación se anexa el codigo utilizado para obtener el diagráma de Poincaré
 
+```
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import signal
+from scipy.signal import find_peaks
+import math
+import os
+
+file_path = '/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv'
+df = pd.read_csv(file_path)
+col_ecg = df.columns[-1]
+ecg = df[col_ecg].values
+fs = 2000
+offset_samples = 16000
+ecg = ecg[offset_samples:]
+t = np.arange(len(ecg)) / fs
+
+b_bp = np.array([ 0.0086791 ,  0.01735821, -0.0086791 , -0.03471642,
+                 -0.0086791 ,  0.01735821,  0.0086791 ])
+a_bp = np.array([ 1.        , -4.05871114,  6.97438582, -6.56265079,
+                  3.57080163, -1.05708974,  0.13326476])
+ecg_bp = signal.lfilter(b_bp, a_bp, ecg)
+
+f0 = 60.0
+Q = 30.0
+b_notch, a_notch = signal.iirnotch(f0, Q, fs)
+ecg_filtered = signal.lfilter(b_notch, a_notch, ecg_bp)
+
+samples_per_2min = 2 * 60 * fs
+seg1 = ecg_filtered[:samples_per_2min]
+seg2 = ecg_filtered[samples_per_2min:2*samples_per_2min]
+t1 = np.arange(len(seg1)) / fs
+t2 = np.arange(len(seg2)) / fs + 120
+
+def detect_r_peaks(signal_seg, fs):
+    distance = int(0.25 * fs)
+    height = np.mean(signal_seg) + 0.5 * np.std(signal_seg)
+    peaks, props = find_peaks(signal_seg, distance=distance, height=height, prominence=0.3*np.std(signal_seg))
+    return peaks, props
+
+def compute_rr(peaks, fs, offset=0):
+    times = (peaks / fs) + offset
+    rr = np.diff(times)
+    rr_times = times[1:]
+    return rr_times, rr
+
+def poincare_indices(rr):
+    if len(rr) < 2:
+        return np.nan, np.nan, np.nan, np.nan, np.nan
+    rr1 = rr[:-1]
+    rr2 = rr[1:]
+    sd1 = np.sqrt(np.var((rr2 - rr1) / np.sqrt(2)))
+    sd2 = np.sqrt(np.var((rr2 + rr1) / np.sqrt(2)))
+    sdnn = np.std(rr, ddof=0)
+    csi = sd2 / sd1 if sd1 > 0 else np.nan
+    cvi = np.log10(sd1 * sd2 * sdnn) if (sd1 > 0 and sd2 > 0 and sdnn > 0) else np.nan
+    return sd1, sd2, sdnn, csi, cvi
+
+peaks1, props1 = detect_r_peaks(seg1, fs)
+rr_times1, rr1 = compute_rr(peaks1, fs, offset=0)
+sd1_1, sd2_1, sdnn1, csi1, cvi1 = poincare_indices(rr1)
+mean_rr1 = np.mean(rr1) if len(rr1) > 0 else np.nan
+
+peaks2, props2 = detect_r_peaks(seg2, fs)
+rr_times2, rr2 = compute_rr(peaks2, fs, offset=120)
+sd1_2, sd2_2, sdnn2, csi2, cvi2 = poincare_indices(rr2)
+mean_rr2 = np.mean(rr2) if len(rr2) > 0 else np.nan
+
+summary = pd.DataFrame({
+    'Segmento': ['Reposo (0-120 s)', 'Lectura (120-240 s)'],
+    'Nº picos R detectados': [len(peaks1), len(peaks2)],
+    'Media RR (s)': [mean_rr1, mean_rr2],
+    'SDNN (s)': [sdnn1, sdnn2],
+    'SD1 (s)': [sd1_1, sd1_2],
+    'SD2 (s)': [sd2_1, sd2_2],
+    'CSI (SD2/SD1)': [csi1, csi2],
+    'CVI (log10(SD1*SD2*SDNN))': [cvi1, cvi2]
+})
+
+out_dir = '/mnt/data/hrv_results'
+os.makedirs(out_dir, exist_ok=True)
+pd.DataFrame({'time_s': rr_times1, 'RR_s': rr1}).to_csv(os.path.join(out_dir, 'RR_segmento1.csv'), index=False)
+pd.DataFrame({'time_s': rr_times2, 'RR_s': rr2}).to_csv(os.path.join(out_dir, 'RR_segmento2.csv'), index=False)
+summary.to_csv(os.path.join(out_dir, 'HRV_summary.csv'), index=False)
+
+print(summary)
+
+plt.figure(figsize=(14,4))
+plt.plot(t, ecg_filtered)
+plt.title("ECG Completo Filtrado (después de la muestra 14000)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t1, seg1)
+plt.title("Segmento 1: Reposo (0–120 s)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t2, seg2)
+plt.title("Segmento 2: Lectura/Simpático (120–240 s)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t1, seg1)
+plt.plot(t1[peaks1], seg1[peaks1], 'ro')
+plt.title("Picos R - Segmento 1 (Reposo)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t2, seg2)
+plt.plot(t2[peaks2], seg2[peaks2], 'ro')
+plt.title("Picos R - Segmento 2 (Simpático)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10,4))
+plt.plot(rr1)
+plt.title("Intervalos RR - Segmento 1 (Reposo)")
+plt.xlabel("Latido")
+plt.ylabel("RR (s)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10,4))
+plt.plot(rr2)
+plt.title("Intervalos RR - Segmento 2 (Simpático)")
+plt.xlabel("Latido")
+plt.ylabel("RR (s)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(5,5))
+plt.scatter(rr1[:-1], rr1[1:], s=10)
+plt.title("Diagrama de Poincaré - Segmento 1 (Reposo)")
+plt.xlabel("RR(n) [s]")
+plt.ylabel("RR(n+1) [s]")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(5,5))
+plt.scatter(rr2[:-1], rr2[1:], s=10)
+plt.title("Diagrama de Poincaré - Segmento 2 (Simpático)")
+plt.xlabel("RR(n) [s]")
+plt.ylabel("RR(n+1) [s]")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+
+```
+
+Obteniéndose
+
+
+
+
+<img width="1151" height="643" alt="image" src="https://github.com/user-attachments/assets/45ce340a-4819-4d92-90b6-65b694c92fd3" />
+
+
+<img width="1156" height="328" alt="image" src="https://github.com/user-attachments/assets/bcb12786-15d8-4c50-b29c-c87a215838d6" />
+
+
+<img width="397" height="411" alt="image" src="https://github.com/user-attachments/assets/1b201176-6096-4c7e-911c-83294dc53de6" />
+
+
+<img width="403" height="412" alt="image" src="https://github.com/user-attachments/assets/6be29b50-5118-44a3-83f6-e9d070de0177" />
+
+
+![Uploading image.png…]()
+
+
 
 El diagrama de Poincaré es una herramienta de análisis no lineal que contribuye a estudiar la variabilidad de la frecuencia cardíaca (HRV) mediante el análisis de la dispersión de los intervalos RR en un electrocardiograma. Para crearla, se grafica cada intervalo RR_n en comparación con RR_n+1, dando lugar a una nube de puntos que muestra el equilibrio entre las ramas simpática y parasimpática del sistema nervioso autónomo. Esta representación recoge las oscilaciones rápidas y lentas en la actividad del nodo sinusal, proporcionando datos que no se pueden obtener mediante análisis lineales.
 En esta actividad, se dividió el ECG en cuatro segmentos de 60 segundos cada uno, los cuales representan intervalos tanto de reposo como de lectura en voz alta. Para cada segmento se generó el diagrama de Poincaré y se calcularon los índices que provienen de la elipse ajustada. CVI, CSI, SD1 y SD2. El índice SD1 evalúa la dispersión que es perpendicular a la diagonal de identidad; se vincula con la variabilidad a corto plazo, que está regulada en gran medida por el funcionamiento parasimpático. Por otro lado, el índice SD2 mide la dispersión en la diagonal y refleja la variabilidad a largo plazo, que está vinculada con la regulación general del sistema cardiovascular, donde intervienen los mecanismos parasimpáticos y simpáticos.
