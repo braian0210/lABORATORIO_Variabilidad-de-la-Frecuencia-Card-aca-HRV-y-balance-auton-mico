@@ -285,6 +285,48 @@ Obteniendo
  Implementar el filtro a la señal obtenida asumiendo parámetros
 iniciales en 0.
 
+A continuación se anexa el codigo que se utilizo para filtar la señal ECG capturada
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+
+file_path = "/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv"
+df = pd.read_csv(file_path)
+columna_ecg = df.columns[-1]
+ecg = df[columna_ecg].values
+b_bp = np.array([ 0.0086791 ,  0.01735821, -0.0086791 , -0.03471642,
+                 -0.0086791 ,  0.01735821,  0.0086791 ])
+a_bp = np.array([ 1.        , -4.05871114,  6.97438582, -6.56265079,
+                  3.57080163, -1.05708974,  0.13326476])
+ecg_filtrada = signal.lfilter(b_bp, a_bp, ecg)
+
+plt.figure(figsize=(14,4))
+plt.plot(ecg_filtrada)
+plt.title("Señal ECG Filtrada (Pasa-Banda)")
+plt.axis([0,380000,-3,3.0])
+plt.xlabel("Muestras")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(ecg_filtrada)
+plt.title("Señal ECG Filtrada (Pasa-Banda)")
+plt.axis([10000,30000,-3,3.0])
+plt.xlabel("Muestras")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.show()
+```
+
+Obteniéndose
+
+<img width="975" height="648" alt="image" src="https://github.com/user-attachments/assets/26a5821c-524b-4b8b-bde8-28af0d6e26e1" />
+
+
 A continuación se adjuntan los filtros que se elaboraron 
 
 Filtro Pasa Bajos 
