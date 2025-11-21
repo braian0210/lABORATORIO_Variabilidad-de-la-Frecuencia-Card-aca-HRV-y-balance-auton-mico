@@ -204,6 +204,9 @@ plt.show()
 
 # Parte B
 
+<img width="237" height="631" alt="image" src="https://github.com/user-attachments/assets/ba44eac3-3218-4da7-9ea8-365851c36e99" />
+
+
 c. Pre-procesamiento de la señal 
 
  Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
@@ -536,6 +539,10 @@ tiempo, como la media de los intervalos R-R y su desviación estándar, entre
 ambos segmentos de señal ECG.
 
 # PARTE C
+
+<img width="372" height="607" alt="image" src="https://github.com/user-attachments/assets/1a17b350-bddc-4d63-a8da-dac1194e5c9b" /><img width="218" height="203" alt="image" src="https://github.com/user-attachments/assets/4ac94d83-8aab-4cc5-872f-aae76bcdb908" />
+
+
 
 ## e. Construcción del diagrama de Poincaré
 
