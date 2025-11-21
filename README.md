@@ -204,7 +204,7 @@ plt.show()
 
 c. Pre-procesamiento de la señal 
 
--Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
+ Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
 demostrando su diseño.
 
 
