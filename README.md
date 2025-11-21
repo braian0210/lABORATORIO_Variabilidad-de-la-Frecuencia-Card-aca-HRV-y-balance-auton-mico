@@ -93,7 +93,8 @@ Una reducción significativa de HRV se asocia con estrés, sobreentrenamiento, d
 
 ![Imagen de WhatsApp 2025-11-20 a las 20 01 50_be188a60](https://github.com/user-attachments/assets/7566e757-9e82-459b-81a3-3191abb2c864)
 
-![Imagen de WhatsApp 2025-11-20 a las 20 02 07_9cf84bc0](https://github.com/user-attachments/assets/252f8905-01b5-4c97-885b-0567e1ef5b4b)
+![Imagen de WhatsApp 2025-11-20 a las 20 08 08_56cd2656](https://github.com/user-attachments/assets/a2db78cb-d6ba-40ee-b8cb-e9af7e76c58b)
+
 
 
 Seleccionar a un sujeto de prueba para adquirir la señal electrocardiográfica;
