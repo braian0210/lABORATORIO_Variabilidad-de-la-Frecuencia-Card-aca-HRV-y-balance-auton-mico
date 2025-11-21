@@ -388,6 +388,14 @@ Obteniendo
 -Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos
 cada uno.
 
+
+<img width="1441" height="496" alt="image" src="https://github.com/user-attachments/assets/557c307a-5c1c-4d09-90c2-c9f77d15a1a6" />
+
+
+<img width="1435" height="492" alt="image" src="https://github.com/user-attachments/assets/c7840304-558f-46a7-b942-efb7a79a9d34" />
+
+
+
 -Identificar los picos R en cada uno de los segmentos, calcular los intervalos
 R-R y obtener una nueva señal con dicha información. 
 
