@@ -117,7 +117,7 @@ from nidaqmx.stream_readers import AnalogSingleChannelReader
 from scipy.signal import filtfilt
 
 
-rate = 2000   # Hz
+rate = 1600  # Hz
 duration = 240  # 4 minutos
 save_data = []
 
@@ -144,6 +144,60 @@ np.savetxt(r"C:\Users\USUARIO\Desktop\lab 5\Datos4minutosBrayan.csv", save_data,
 print("Total muestras:", len(save_data))
 
 ```
+Después de la captura de la señal ECG, en drive se adjunta el archivo csv de la señal Ecg del sujeto y se utliza el siguiente codigo para  graficar la señal capturada en google colab.
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+file_path = "/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv"
+df = pd.read_csv(file_path)
+print("Primeras filas del archivo:")
+display(df.head())
+columna_ecg = df.columns[-1]
+print(f"Graficando columna: {columna_ecg}")
+
+# === GRAFICAR LA SEÑAL ECG ===
+plt.figure(figsize=(14,4))
+plt.plot(df[columna_ecg]) # Changed columna_emg to columna_ecg
+plt.title("Señal EcG")
+plt.xlabel("Muestras")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.show()
+
+```
+
+obtiendo 
+
+<img width="1424" height="483" alt="image" src="https://github.com/user-attachments/assets/45439e94-1b5f-41a0-97eb-cf27b8c4e43f" />
+
+
+A continuacion amplia la anterior grafica para poder observar de mejor forma la señal ECG capturada del sujeto seleccionado.
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+file_path = "/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv"  
+df = pd.read_csv(file_path)
+print("Primeras filas del archivo:")
+display(df.head())
+columna_ecg = df.columns[-1]   
+print(f"Graficando columna: {columna_ecg}")
+# === GRAFICAR LA SEÑAL EMG ===
+plt.figure(figsize=(14,4))
+plt.plot(df[columna_ecg])
+plt.axis([10000,30000,0,5.0])
+plt.title("Señal EMG")
+plt.xlabel("Muestras")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.show()
+
+```
+
+<img width="1451" height="482" alt="image" src="https://github.com/user-attachments/assets/795fd74e-da77-48db-84aa-add40a00c066" />
 # PARTE B
 
 ## c. Pre-procesamiento de la señal
