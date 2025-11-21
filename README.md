@@ -170,7 +170,8 @@ plt.show()
 
 obtiendo 
 
-<img width="1424" height="483" alt="image" src="https://github.com/user-attachments/assets/45439e94-1b5f-41a0-97eb-cf27b8c4e43f" />
+<img width="1424" height="482" alt="image" src="https://github.com/user-attachments/assets/220402cd-1ed6-4347-91c6-9c0a2ff224d3" />
+
 
 
 A continuacion amplia la anterior grafica para poder observar de mejor forma la señal ECG capturada del sujeto seleccionado.
@@ -197,7 +198,8 @@ plt.show()
 
 ```
 
-<img width="1451" height="482" alt="image" src="https://github.com/user-attachments/assets/795fd74e-da77-48db-84aa-add40a00c066" />
+<img width="1452" height="485" alt="image" src="https://github.com/user-attachments/assets/38ef6f05-38ac-4ae8-bab7-b542efcd6861" />
+
 
 
 # Parte B
@@ -206,6 +208,8 @@ c. Pre-procesamiento de la señal
 
  Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
 demostrando su diseño.
+
+
 
 
 
