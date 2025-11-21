@@ -213,6 +213,84 @@ c. Pre-procesamiento de la señal
 demostrando su diseño.
 
 
+A continuación se anexa el código en donde se hace uso de un filtro pasabandas y un filtro notch para filtar la señal ECG del sujeto seleccionado.
+
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+
+file_path = "/content/drive/Shareddrives/Labs procesamiento de señales/Lab 5 este si /Datos4minutosBrayan.csv"
+df = pd.read_csv(file_path)
+columna_ecg = df.columns[-1]
+ecg = df[columna_ecg].values
+fs = 2000.0  
+t = np.arange(len(ecg)) / fs
+
+#Filtro Pasa Banda
+b_bp = np.array([ 0.0086791 ,  0.01735821, -0.0086791 , -0.03471642,
+                 -0.0086791 ,  0.01735821,  0.0086791 ])
+a_bp = np.array([ 1.        , -4.05871114,  6.97438582, -6.56265079,
+                  3.57080163, -1.05708974,  0.13326476])
+
+ecg_bp = signal.lfilter(b_bp, a_bp, ecg)
+
+#Filtro Notch
+f0 = 60.0   # Frequency to remove
+Q = 30.0    # Quality factor
+b_notch, a_notch = signal.iirnotch(f0, Q, fs)
+
+ecg_filtered = signal.lfilter(b_notch, a_notch, ecg_bp)
+
+plt.figure(figsize=(14,4))
+plt.plot(t, ecg)
+plt.title("Señal ECG Original")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t, ecg)
+plt.title("Señal ECG Con AXIS Original")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.axis([10,30,0,5.0])
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+
+plt.figure(figsize=(14,4))
+plt.plot(t, ecg_filtered)
+plt.title("Señal ECG Filtrada (Pasa Banda + Notch 60 Hz)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(14,4))
+plt.plot(t, ecg_filtered)
+plt.title("Señal ECG Filtrada Con AXIS (Pasa Banda + Notch 60 Hz)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.axis([10,30,-2,2.0])
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+```
+
+Obteniéndose
+
+
+<img width="1153" height="645" alt="image" src="https://github.com/user-attachments/assets/5213d7be-4511-4b96-8a7e-2d877f0a7326" />
+
+
+<img width="1151" height="648" alt="image" src="https://github.com/user-attachments/assets/43f27f42-e393-4031-9454-ac770409f30e" />
 
 
 
@@ -516,6 +594,43 @@ Obteniéndose
 
 
 <img width="781" height="508" alt="image" src="https://github.com/user-attachments/assets/71b31f7a-a0ba-4663-aa84-af1d83b5ea46" />
+
+Filtro Notch
+
+```
+from scipy import signal
+import matplotlib.pyplot as plt
+import numpy as np
+fs = 1600.0  # Sample frequency (Hz)
+f0 = 60.0  # Frequency to be removed from signal (Hz)
+Q = 30.0  # Quality factor
+# Design notch filter
+b, a = signal.iirnotch(f0, Q, fs)
+# Frequency response
+freq, h = signal.freqz(b, a, fs=fs)
+# Plot
+fig, ax = plt.subplots(2, 1, figsize=(8, 6))
+ax[0].plot(freq, 20*np.log10(abs(h)), color='blue')
+ax[0].set_title("Frequency Response")
+ax[0].set_ylabel("Amplitude [dB]", color='blue')
+ax[0].set_xlim([0, 100])
+ax[0].set_ylim([-25, 10])
+ax[0].grid(True)
+ax[1].plot(freq, np.unwrap(np.angle(h))*180/np.pi, color='green')
+ax[1].set_ylabel("Phase [deg]", color='green')
+ax[1].set_xlabel("Frequency [Hz]")
+ax[1].set_xlim([0, 100])
+ax[1].set_yticks([-90, -60, -30, 0, 30, 60, 90])
+ax[1].set_ylim([-90, 90])
+ax[1].grid(True)
+plt.show()
+```
+
+Obteniéndose
+
+
+<img width="793" height="611" alt="image" src="https://github.com/user-attachments/assets/f0eabe40-fac7-4521-bedd-a3a33e22fb37" />
+
 
 
 -Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos
