@@ -200,12 +200,14 @@ plt.show()
 <img width="1451" height="482" alt="image" src="https://github.com/user-attachments/assets/795fd74e-da77-48db-84aa-add40a00c066" />
 
 
-# Pate B
+# Parte B
 
 c. Pre-procesamiento de la señal 
 
 -Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
 demostrando su diseño.
+
+
 
  Diseñar un filtro IIR de acuerdo con los parámetros de la señal.
 
@@ -213,6 +215,77 @@ demostrando su diseño.
 
  Implementar el filtro a la señal obtenida asumiendo parámetros
 iniciales en 0.
+
+A continuación se adjuntan los filtros que se elaboraron 
+
+Filtro Pasa Bajos 
+
+
+```
+import numpy as np
+from scipy import signal
+import matplotlib.pyplot as plt
+import math
+
+fs = 1600 # Hz. Frecuencia de muestreo [Fs]
+N = 4
+f_c = 200 # Hz
+wn = f_c * 2 * np.pi
+
+b_analog, a_analog = signal.iirfilter(
+    N, 
+    wn, 
+    btype='lowpass', 
+    analog=True, 
+    ftype='butter'
+)
+
+print(" Coeficientes Analógicos H(s) ")
+print(f"Numerador bs: {b_analog}")
+print(f"Denominador as: {a_analog}\n")
+
+# Transformada Bilineal 
+
+b_digital, a_digital = signal.bilinear(b_analog, a_analog, fs)
+
+filtz = signal.dlti(b_digital, a_digital)
+
+print("--- Coeficientes Digitales H(z) ---")
+print(f"Numerador b_z: {filtz.num}")
+print(f"Denominador a_z: {filtz.den}\n")
+
+```
+
+Obteniendo 
+
+<img width="839" height="201" alt="image" src="https://github.com/user-attachments/assets/71ad11ff-1bea-4e8a-a0c4-0e88bed85bd8" />
+
+Filtro Pasa Altos
+
+```
+import numpy as np
+from scipy import signal
+import matplotlib.pyplot as plt
+import math
+
+fs = 1600
+N = 4
+f_c = 0.04
+zeta = 1 
+G = 1     
+frad = f_c * 2 * np.pi 
+nums = np.array([G, 0, 0]) 
+dens = np.array([1, 2 * zeta * frad, frad * frad])
+b_digital, a_digital = signal.bilinear(nums, dens, fs)
+filtz = signal.dlti(b_digital, a_digital)
+print(f"Numerador b_z: {filtz.num}") 
+print(f"Denominador a_z: {filtz.den}")
+```
+
+Obteniendo 
+
+<img width="593" height="59" alt="image" src="https://github.com/user-attachments/assets/cbf99bf9-a0b8-4cfb-a882-d2f05b0046ce" />
+
 
 -Dividir la señal filtrada en dos segmentos de señal con duración de 2 minutos
 cada uno.
