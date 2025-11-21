@@ -49,7 +49,12 @@ Vasoconstricción (estrechamiento) de las arterias del corazón.
   El método no lineal para evaluar la HRV es el diagrama de Poincaré.  Se trata de graficar cada intervalo R-R(n) en relación con el siguiente, que es R-R(n+1).  Esta nube de puntos ilustra de manera visual la dinámica del nodo sinusal.
   
   <img width="469" height="477" alt="Figura-94-Diagrama-de-Poincare-de-una-serie-RR" src="https://github.com/user-attachments/assets/5bcd6d47-b5b6-4bf3-a60b-2db67ebc5e58" />
+
+  La imagen muestra un gráfico de retorno de Poincaré que ilustra la variabilidad de la frecuencia cardíaca, específicamente cómo se agrupan los latidos normales, ectópicos y post-ectópicos en diferentes regiones del diagrama, donde los latidos normales se agrupan en una nube elíptica central y los latidos ectópicos y post-ectópicos forman agrupaciones separadas, lo que ayuda a la identificación de patologias cardiacas.
   
+ Latidos ectópicos y post-ectópicos: Estos son cambios en un latido cardíaco normales que producen cambios conducen a latidos cardíacos extras o intermitentes, y pueden ser Contracciones ventriculares prematuras (CVP) o contracciones auriculares prematuras (CAP)
+
+ 
   Las principales ventajas que la Gráfica de Poincaré ofrece en comparación con los métodos tradicionales que se apoyan en parámetros estadísticos son:
   + Permite vizualizar aspectos no lineales de la secuencia de intervalos
   + Fácil visualizació de la variación entre latido
@@ -678,5 +683,6 @@ En suma, los diagramas de Poincaré y sus índices muestran con claridad cómo l
  - Tindle J, Tadi P. Neuroanatomía, Sistema Nervioso Parasimpático. [Actualizado el 31 de octubre de 2022]. En: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; enero de 2025-. Disponible en: https://www-ncbi-nlm-nih-gov.translate.goog/books/NBK553141/?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=tc
  - Waxenbaum JA, Reddy V, Varacallo MA. Anatomy, Autonomic Nervous System. 2023 Jul 24. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Jan–. PMID: 30969667.
 https://www.kenhub.com/es/library/anatomia-es/inervacion-del-corazon
+ - Latidos cardíacos ectópicos: MedlinePlus enciclopedia médica. (s. f.). https://medlineplus.gov/spanish/ency/article/001100.htm
 
 
