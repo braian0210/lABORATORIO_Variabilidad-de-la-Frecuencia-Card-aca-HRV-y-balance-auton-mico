@@ -285,7 +285,7 @@ Obteniendo
  Implementar el filtro a la señal obtenida asumiendo parámetros
 iniciales en 0.
 
-A continuación se anexa el codigo que se utilizo para filtar la señal ECG capturada
+A continuación se anexa el codigo que se utilizo para filtarr la señal ECG capturada
 
 ```
 import pandas as pd
