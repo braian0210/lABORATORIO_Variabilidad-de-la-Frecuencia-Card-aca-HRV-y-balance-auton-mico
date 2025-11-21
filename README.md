@@ -198,9 +198,11 @@ plt.show()
 ```
 
 <img width="1451" height="482" alt="image" src="https://github.com/user-attachments/assets/795fd74e-da77-48db-84aa-add40a00c066" />
-# PARTE B
 
-# c. Pre-procesamiento de la señal
+
+# Pate B
+
+c. Pre-procesamiento de la señal 
 
 -Aplicar los filtros digitales necesarios para eliminar el ruido de la señal,
 demostrando su diseño.
