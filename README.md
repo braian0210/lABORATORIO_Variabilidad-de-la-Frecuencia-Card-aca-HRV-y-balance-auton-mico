@@ -10,7 +10,7 @@ Identificar cambios en el balance autonómico mediante análisis temporal de la 
 Antes de iniciar la práctica, los estudiantes deberán realizar una investigación teórica que incluya los siguientes temas:
 
 - **Actividad simpática y parasimpática del sistema nervioso autónomo.**
-  El sistema nervioso autónomo se divide en 3, sin embargo hablaremos de los mas importante el simpatico y el parasimaptico, el sistema nervios simpatico prepara el cuerpo para la lucha o huida ya que aumenta la frecuencia cardiac y la presión arterial, por el contrario el parasimpático es del descanso y digestión ezste busca la recuperación y calma, el simpático Usa principalmente el neurotansmisor norepinefrina (fibras adrenérgicas), mientras el parasimpático usa principalmente acetilcolina (fibras colinérgicas) para las neuronas preganglionares y posganglionares que activan los receptores muscarínicos.
+  El sistema nervioso autónomo se divide en 3, sin embargo hablaremos de los mas importante el simpatico y el parasimaptico, el sistema nervios simpatico prepara el cuerpo para la lucha o huida ya que aumenta la frecuencia cardiaca y la presión arterial, por el contrario el parasimpático es del descanso y digestión ezste busca la recuperación y calma, el simpático Usa principalmente el neurotansmisor norepinefrina (fibras adrenérgicas), mientras el parasimpático usa principalmente acetilcolina (fibras colinérgicas) para las neuronas preganglionares y posganglionares que activan los receptores muscarínicos.
   
 - **Efecto de la actividad simpática y parasimpática en la frecuencia
 cardíaca.**
